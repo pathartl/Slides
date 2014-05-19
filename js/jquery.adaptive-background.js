@@ -43,7 +43,7 @@
       $( opts.selector ).each(function(index, el){
         var $this = $(this);
 
-        /*  Small helper functions which applie 
+        /*  Small helper functions which applie
             colors, attrs, triggers events, and check for css 
         */
         var handleColors = function(){
