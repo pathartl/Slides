@@ -5,14 +5,15 @@
 		'use strict';
 		
 		// DOM ready, take it away
-
-		$('body.home main').fullpage({
-			navigation: true,
-			navigationPosition: 'right',
-			css3: true,
-			scrollOverflow: true,
-			resize: false
-		});
+		if ( $('body').hasClass('home') ) {
+			$('body.home main').fullpage({
+				navigation: true,
+				navigationPosition: 'right',
+				css3: true,
+				scrollOverflow: true,
+				resize: false
+			});
+		}
 
 		$('.section').each(function() {
 			// var colorThief = new ColorThief();

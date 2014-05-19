@@ -278,7 +278,7 @@ function html5_blank_view_article($more)
 // Remove Admin bar
 function remove_admin_bar()
 {
-    return true;
+    return false;
 }
 
 // Remove 'text/css' from our enqueued stylesheet
@@ -573,5 +573,31 @@ function register_custom_widgets() {
     register_widget( 'WP_Widget_Gravatar' );
 }
 add_action( 'widgets_init', 'register_custom_widgets' );
+
+function custom_footer() {
+?>
+    <!-- /section -->
+    <div class="section" id="footer">
+        <!-- footer -->
+        <footer class="footer" role="contentinfo">
+            <div id="footer-area-1">
+                <?php if ( dynamic_sidebar('Footer Widget Area 1') ) : else : endif; ?>
+            </div>
+            <div id="footer-area-2">
+                <?php if ( dynamic_sidebar('Footer Widget Area 2') ) : else : endif; ?>
+            </div>
+    
+            <!-- copyright -->
+            <p class="copyright">
+                &copy; <?php echo date('Y'); ?> Copyright <?php bloginfo('name'); ?>. <?php _e('Proudly powered by', 'html5blank'); ?>
+                <a href="//wordpress.org" title="WordPress">WordPress</a>.
+            </p>
+            <!-- /copyright -->
+
+        </footer>
+        <!-- /footer -->
+    </div>
+<?php
+}
 
 ?>

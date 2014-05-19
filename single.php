@@ -19,9 +19,9 @@
 
 			<div class="content-wrap">
 				<!-- post title -->
-				<h1>
+				<h2>
 					<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
-				</h1>
+				</h2>
 				<!-- /post title -->
 	
 				<!-- post details -->
@@ -47,6 +47,7 @@
 		<!-- /article -->
 		</div>
 
+
 	<?php endwhile; ?>
 
 	<?php else: ?>
@@ -60,6 +61,8 @@
 		<!-- /article -->
 
 	<?php endif; ?>
+
+		<?php custom_footer(); ?>
 
 	</section>
 	<!-- /section -->
