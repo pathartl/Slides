@@ -1,14 +1,13 @@
 /*!
-	Theme Name: HTML5 Blank
-	Theme URI: http://html5blank.com
-	Description: HTML5 Blank WordPress Theme
-	Version: 1.4.3
-	Author: Todd Motto (@toddmotto)
-	Author URI: http://toddmotto.com
-	Tags: Blank, HTML5, CSS3
+	Theme Name: Slides
+	Theme URI: http://pathartl.me
+	Description: Full Screen Slider Theme For http://pathartl.me
+	Version: 1.0.0
+	Author: Pat Hartl (@pathartl)
+	Author URI: http://pathartl.me
+	Tags: Full Screen, HTML5, CSS3
 
-	License: MIT
-	License URI: http://opensource.org/licenses/mit-license.php
+	License: CC
 */
 
 /*------------------------------------*\
@@ -51,11 +50,12 @@ img {
 	vertical-align:bottom;
 }
 a {
-	color:#444;
+	color:#555;
 	text-decoration:none;
+	transition: .5s all;
 }
 a:hover {
-	color:#444;
+	color:#222;
 }
 a:focus {
 	outline:0;
@@ -141,10 +141,8 @@ nav {
 
 /* wrapper */
 .wrapper {
-	max-width: 900px;
-	width:95%;
-	margin:0 auto;
-	position:relative;
+	width: 100%;
+	position: relative;
 }
 /* header */
 .header {
@@ -166,41 +164,149 @@ nav {
 
 }
 /* footer */
-.footer {
-
+footer {
+	padding: 40px;
+	height: 100%;
+	position: relative;
 }
+
+#footer-area-1 {
+
+	overflow: auto;
+	margin-bottom: 40px;
+
+	p {
+		font-size: 12px;
+	}
+
+	&>div:nth-child(1) {
+		width: 33.3%;
+		float: left;
+	}
+	&>div:nth-child(2) {
+		width: 66.7%;
+		float: right;
+	}
+}
+
+#footer-area-2 {
+	overflow: auto;
+	&>div {
+		width: 25%;
+		float: left;
+	}
+}
+
 
 /*------------------------------------*\
     MAIN
 \*------------------------------------*/
+
+html {
+	text-rendering: optimizeLegibility !important;
+	-webkit-font-smoothing: antialiased !important;
+}
 
 body {
 	background: #c0c0c0;
 }
 
 .wrapper {
-	background: #fff;
-	box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.75);
 }
 
 article {
 
 }
 
+.section.table {
+	width: 100%;
+	height: 100%;
+	background: #c0c0c0;
+	transition: background 0.5s;
+}
+
 .content-wrap {
-	padding: 0 20px;
+	padding: 0 40px;
+	overflow: hidden;
+	box-shadow: inset 0 20px 20px -20px rgba(0, 0, 0, 0.75);
+	position: relative;
 }
 
 p {
 	margin: 0px;
 }
 
-iframe {
-	width: 900px
+.post-details {
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	span {padding: 0 10px; display: inline-block}
+	.date {border-right: 1px solid #ccc}
 }
 
-.tableCell {
+.continue-reading {
+	display: block;
+	text-align: right;
+	float: right;
+	font-size: 24px;
+	color: #c0c0c0;
+	font-weight: 100;
+	// font-style: italic;
+	margin-top: 30px
+}
+
+.post-edit-link {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	display: none
+}
+
+div.tableCell {
 	vertical-align: top;
+	box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.75);
+	display: block;
+	width: 900px;
+	margin: 0 auto;
+	background: #fff;
+}
+
+.home article {
+	p {
+		font-size: 20px;
+	}
+}
+
+.copyright {
+	position: absolute;
+	bottom: 40px;
+	right: 40px;
+	font-size: 12px;
+}
+
+/*------------------------------------*\
+    WIDGETS
+\*------------------------------------*/
+
+.widget_about_me {
+	h3 {
+		margin-top: 0px;
+		margin-bottom: 5px;
+	}
+	.textwidget p {
+		column-count: 2;
+		-webkit-column-count: 2;
+		-moz-column-count: 2;
+	}
+}
+
+.widget_gravatar {
+	padding: 0;
+	padding-right: 30px;
+	img {
+		box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.75);
+		width: 100%;
+	}
 }
 
 /*------------------------------------*\
@@ -221,10 +327,15 @@ iframe {
 
 h2 {
 	text-align: center;
-	font: 40px 'Roboto Light', sans-serif;
+	font: 40px 'Roboto', sans-serif;
+	font-weight: 300;
+	margin: 30px 0;
 }
 
-body {font: 14px 'Roboto', sans-serif}
+body {
+	font: 14px 'Roboto', sans-serif;
+	font-weight: 300;
+}
 
 p {
 	text-align: justify;

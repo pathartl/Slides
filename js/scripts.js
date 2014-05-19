@@ -6,11 +6,18 @@
 		
 		// DOM ready, take it away
 
-		$('section').fullpage({
+		$('body.home main').fullpage({
 			navigation: true,
 			navigationPosition: 'right',
 			css3: true,
-			scrollOverflow: true
+			scrollOverflow: true,
+			resize: false
+		});
+
+		$('.section').each(function() {
+			// var colorThief = new ColorThief();
+			// var image = $(this).children("img")[0];
+			// console.log(colorThief.getColor(image));
 		});
 
 		// Generate the other elements for our nav
@@ -22,6 +29,11 @@
 			 	'<span class="front">' + oldText + '</span><span class="back">' + oldText + '</span>' +
 			 '</span>')
 		});
+	});
+
+	$(window).ready(function() {
+		$('.section .article .featured-image img').attr("data-adaptive-background", '1');
+		$.adaptiveBackground.run();
 	});
 	
 })(jQuery, this);

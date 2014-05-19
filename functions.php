@@ -87,6 +87,12 @@ function html5blank_nav()
 	);
 }
 
+// Custom menus
+function register_custom_menus() {
+  register_nav_menu('find-me-menu',__( 'Find Me Menu' ));
+}
+add_action( 'init', 'register_custom_menus' );
+
 // Load HTML5 Blank scripts (header.php)
 function html5blank_header_scripts()
 {
@@ -103,6 +109,9 @@ function html5blank_header_scripts()
 
         wp_register_script('slimscroll', get_template_directory_uri() . '/js/jquery.slimscroll.min.js', array('jquery'), '1.0.0'); // ThreeJS
         wp_enqueue_script('slimscroll'); // Enqueue it!
+
+        wp_register_script('adaptive-background', get_template_directory_uri() . '/js/jquery.adaptive-background.js', array('jquery'), '1.0.0'); // ThreeJS
+        wp_enqueue_script('adaptive-background'); // Enqueue it!
 
         wp_enqueue_script('jquery-ui');
         wp_enqueue_script("jquery-effects-core");
@@ -130,7 +139,7 @@ function html5blank_styles()
     wp_register_style('html5blank', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
     wp_enqueue_style('html5blank'); // Enqueue it!
 
-    wp_register_style('roboto', 'http://fonts.googleapis.com/css?family=Roboto:400,700,500,300', array(), '1.0', 'all');
+    wp_register_style('roboto', 'http://fonts.googleapis.com/css?family=Roboto:400,700,500,300,100', array(), '1.0', 'all');
     wp_enqueue_style('roboto'); // Enqueue it!
 }
 
@@ -186,9 +195,9 @@ if (function_exists('register_sidebar'))
 {
     // Define Sidebar Widget Area 1
     register_sidebar(array(
-        'name' => __('Widget Area 1', 'html5blank'),
-        'description' => __('Description for this widget-area...', 'html5blank'),
-        'id' => 'widget-area-1',
+        'name' => __('Footer Widget Area 1', 'html5blank'),
+        'description' => __('The first widget area for the footer. Only supports two widgets.', 'html5blank'),
+        'id' => 'footer-area-1',
         'before_widget' => '<div id="%1$s" class="%2$s">',
         'after_widget' => '</div>',
         'before_title' => '<h3>',
@@ -197,9 +206,9 @@ if (function_exists('register_sidebar'))
 
     // Define Sidebar Widget Area 2
     register_sidebar(array(
-        'name' => __('Widget Area 2', 'html5blank'),
-        'description' => __('Description for this widget-area...', 'html5blank'),
-        'id' => 'widget-area-2',
+        'name' => __('Footer Widget Area 2', 'html5blank'),
+        'description' => __('The second widget area for the footer. This is the lower area.', 'html5blank'),
+        'id' => 'footer-area-2',
         'before_widget' => '<div id="%1$s" class="%2$s">',
         'after_widget' => '</div>',
         'before_title' => '<h3>',
@@ -269,7 +278,7 @@ function html5_blank_view_article($more)
 // Remove Admin bar
 function remove_admin_bar()
 {
-    return false;
+    return true;
 }
 
 // Remove 'text/css' from our enqueued stylesheet
@@ -461,5 +470,108 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
 {
     return '<h2>' . $content . '</h2>';
 }
+
+/*------------------------------------*\
+    Custom Widgets
+\*------------------------------------*/
+/**
+ * Text widget class
+ *
+ * @since 2.8.0
+ */
+class WP_Widget_About_Me extends WP_Widget {
+
+    function __construct() {
+        $widget_ops = array('classname' => 'widget_about_me', 'description' => __('About me content'));
+        $control_ops = array('width' => 400, 'height' => 350);
+        parent::__construct('about_me', __('About Me'), $widget_ops, $control_ops);
+    }
+
+    function widget( $args, $instance ) {
+        extract($args);
+
+        /** This filter is documented in wp-includes/default-widgets.php */
+        $title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
+
+        /**
+         * Filter the content of the Text widget.
+         *
+         * @since 2.3.0
+         *
+         * @param string    $widget_text The widget content.
+         * @param WP_Widget $instance    WP_Widget instance.
+         */
+        $text = apply_filters( 'widget_about_me', empty( $instance['text'] ) ? '' : $instance['text'], $instance );
+        echo $before_widget;
+        if ( !empty( $title ) ) { echo $before_title . $title . $after_title; } ?>
+            <div class="textwidget"><?php echo !empty( $instance['filter'] ) ? wpautop( $text ) : $text; ?></div>
+        <?php
+        echo $after_widget;
+    }
+
+    function update( $new_instance, $old_instance ) {
+        $instance = $old_instance;
+        $instance['title'] = strip_tags($new_instance['title']);
+        if ( current_user_can('unfiltered_html') )
+            $instance['text'] =  $new_instance['text'];
+        else
+            $instance['text'] = stripslashes( wp_filter_post_kses( addslashes($new_instance['text']) ) ); // wp_filter_post_kses() expects slashed
+        $instance['filter'] = isset($new_instance['filter']);
+        return $instance;
+    }
+
+    function form( $instance ) {
+        $instance = wp_parse_args( (array) $instance, array( 'title' => '', 'text' => '' ) );
+        $title = strip_tags($instance['title']);
+        $text = esc_textarea($instance['text']);
+?>
+        <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+        <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+
+        <textarea class="widefat" rows="16" cols="20" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>"><?php echo $text; ?></textarea>
+
+        <p><input id="<?php echo $this->get_field_id('filter'); ?>" name="<?php echo $this->get_field_name('filter'); ?>" type="checkbox" <?php checked(isset($instance['filter']) ? $instance['filter'] : 0); ?> />&nbsp;<label for="<?php echo $this->get_field_id('filter'); ?>"><?php _e('Automatically add paragraphs'); ?></label></p>
+<?php
+    }
+}
+
+class WP_Widget_Gravatar extends WP_Widget {
+
+    function __construct() {
+        $widget_ops = array('classname' => 'widget_gravatar', 'description' => __('Generates a gravatar widget'));
+        $control_ops = array('width' => 400, 'height' => 350);
+        parent::__construct('gravatar', __('Gravatar'), $widget_ops, $control_ops);
+    }
+
+    function widget( $args, $instance ) {
+        extract($args);
+
+        echo $before_widget;
+        echo '<img src="http://www.gravatar.com/avatar/' . $instance['hash'] . '?s=225" />';
+        echo $after_widget;
+    }
+
+    function update( $new_instance, $old_instance ) {
+        $instance = $old_instance;
+        $instance['hash'] = strip_tags($new_instance['hash']);
+        $instance['filter'] = isset($new_instance['filter']);
+        return $instance;
+    }
+
+    function form( $instance ) {
+        $instance = wp_parse_args( (array) $instance, array( 'hash' => '' ) );
+        $hash = strip_tags($instance['hash']);
+?>
+        <p><label for="<?php echo $this->get_field_id('hash'); ?>"><?php _e('Gravatar Hash:'); ?></label>
+        <input class="widefat" id="<?php echo $this->get_field_id('hash'); ?>" name="<?php echo $this->get_field_name('hash'); ?>" type="text" value="<?php echo esc_attr($hash); ?>" /></p>
+<?php
+    }
+}
+
+function register_custom_widgets() {
+    register_widget( 'WP_Widget_About_Me' );
+    register_widget( 'WP_Widget_Gravatar' );
+}
+add_action( 'widgets_init', 'register_custom_widgets' );
 
 ?>
