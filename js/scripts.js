@@ -20,7 +20,8 @@
 				css3: true,
 				scrollOverflow: true,
 				resize: false,
-				anchors: anchors
+				anchors: anchors,
+				fixedElements: '.pagination .next, .pagination .prev'
 			});
 		}
 	});

@@ -8,7 +8,7 @@
 
 			<?php custom_footer(); ?>
 
-			<?php //get_template_part('pagination'); ?>
+			<?php get_template_part('pagination'); ?>
 
 		</section>
 	</main>
