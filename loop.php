@@ -1,5 +1,11 @@
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
-	<div class="section" data-anchor="post-slide-<?php the_ID(); ?>" id="section-<?php the_ID(); ?>">
+
+<?php 
+    global $post;
+    $post_slug=$post->post_name;
+?>
+
+	<div class="section" data-anchor="<?php echo $post_slug; ?>">
 		<!-- article -->
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	

@@ -139,6 +139,9 @@ function html5blank_styles()
     wp_register_style('html5blank', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
     wp_enqueue_style('html5blank'); // Enqueue it!
 
+    wp_register_style('fullpage', get_template_directory_uri() . '/js/jquery.fullPage.css', array(), '1.0', 'all');
+    wp_enqueue_style('fullpage'); // Enqueue it!
+
     wp_register_style('roboto', 'http://fonts.googleapis.com/css?family=Roboto:400,700,500,300,100', array(), '1.0', 'all');
     wp_enqueue_style('roboto'); // Enqueue it!
 }
@@ -577,7 +580,7 @@ add_action( 'widgets_init', 'register_custom_widgets' );
 function custom_footer() {
 ?>
     <!-- /section -->
-    <div class="section" id="footer">
+    <div class="section" data-anchor="footer">
         <!-- footer -->
         <footer class="footer" role="contentinfo">
             <div id="footer-area-1">

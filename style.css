@@ -154,20 +154,23 @@ div.tableCell, .single article, .single footer { vertical-align: top; box-shadow
 /* line 301, sass/style.scss */
 .copyright { position: absolute; bottom: 15px; right: 40px; font-size: 12px; }
 
+/* line 308, sass/style.scss */
+#disqus_thread { margin: 30px 0; }
+
 /*------------------------------------*\ WIDGETS
 \*------------------------------------*/
-/* line 312, sass/style.scss */
+/* line 316, sass/style.scss */
 .widget_about_me { margin-top: 7px; }
-/* line 314, sass/style.scss */
-.widget_about_me h3 { margin-top: 0px; margin-bottom: 5px; }
 /* line 318, sass/style.scss */
-.widget_about_me .textwidget { column-count: 2; -webkit-column-count: 2; -moz-column-count: 2; }
+.widget_about_me h3 { margin-top: 0px; margin-bottom: 5px; }
 /* line 322, sass/style.scss */
+.widget_about_me .textwidget { column-count: 2; -webkit-column-count: 2; -moz-column-count: 2; }
+/* line 326, sass/style.scss */
 .widget_about_me .textwidget p { padding-bottom: 10px; }
 
-/* line 326, sass/style.scss */
+/* line 330, sass/style.scss */
 .widget_gravatar { padding: 0; padding-right: 25px; margin-left: 5px; margin-top: 10px; margin-right: -5px; }
-/* line 332, sass/style.scss */
+/* line 336, sass/style.scss */
 .widget_gravatar img { box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.75); width: 100%; }
 
 /*------------------------------------*\ PAGES
@@ -177,13 +180,13 @@ div.tableCell, .single article, .single footer { vertical-align: top; box-shadow
 /*------------------------------------*\
 	TYPOGRAPHY
 \*------------------------------------*/
-/* line 354, sass/style.scss */
+/* line 358, sass/style.scss */
 h2 { text-align: center; font: 40px 'Roboto', sans-serif; font-weight: 300; margin: 30px 0; }
 
-/* line 361, sass/style.scss */
+/* line 365, sass/style.scss */
 body { font: 14px 'Roboto', sans-serif; font-weight: 300; }
 
-/* line 366, sass/style.scss */
+/* line 370, sass/style.scss */
 p { text-align: justify; }
 
 @font-face { font-family: 'Font-Name'; src: url("fonts/font-name.eot"); src: url("fonts/font-name.eot?#iefix") format("embedded-opentype"), url("fonts/font-name.woff") format("woff"), url("fonts/font-name.ttf") format("truetype"), url("fonts/font-name.svg#font-name") format("svg"); font-weight: normal; font-style: normal; }
@@ -192,81 +195,81 @@ p { text-align: justify; }
 \*------------------------------------*/
 /*------------------------------------*\ MISC
 \*------------------------------------*/
-/* line 412, sass/style.scss */
+/* line 416, sass/style.scss */
 ::selection { background: #04A4CC; color: #FFF; text-shadow: none; }
 
-/* line 417, sass/style.scss */
+/* line 421, sass/style.scss */
 ::-webkit-selection { background: #04A4CC; color: #FFF; text-shadow: none; }
 
-/* line 422, sass/style.scss */
+/* line 426, sass/style.scss */
 ::-moz-selection { background: #04A4CC; color: #FFF; text-shadow: none; }
 
 /*------------------------------------*\ WORDPRESS CORE
 \*------------------------------------*/
-/* line 432, sass/style.scss */
+/* line 436, sass/style.scss */
 .alignnone { margin: 5px 20px 20px 0; }
 
-/* line 436, sass/style.scss */
+/* line 440, sass/style.scss */
 .aligncenter, div.aligncenter { display: block; margin: 5px auto 5px auto; }
 
-/* line 440, sass/style.scss */
+/* line 444, sass/style.scss */
 .alignright { float: right; margin: 5px 0 20px 20px; }
 
-/* line 444, sass/style.scss */
+/* line 448, sass/style.scss */
 .alignleft { float: left; margin: 5px 20px 20px 0; }
 
-/* line 448, sass/style.scss */
+/* line 452, sass/style.scss */
 a img.alignright { float: right; margin: 5px 0 20px 20px; }
 
-/* line 452, sass/style.scss */
+/* line 456, sass/style.scss */
 a img.alignnone { margin: 5px 20px 20px 0; }
 
-/* line 455, sass/style.scss */
+/* line 459, sass/style.scss */
 a img.alignleft { float: left; margin: 5px 20px 20px 0; }
 
-/* line 459, sass/style.scss */
+/* line 463, sass/style.scss */
 a img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
 
-/* line 464, sass/style.scss */
+/* line 468, sass/style.scss */
 .wp-caption { background: #FFF; border: 1px solid #F0F0F0; max-width: 96%; padding: 5px 3px 10px; text-align: center; }
 
-/* line 471, sass/style.scss */
+/* line 475, sass/style.scss */
 .wp-caption.alignnone { margin: 5px 20px 20px 0; }
 
-/* line 474, sass/style.scss */
+/* line 478, sass/style.scss */
 .wp-caption.alignleft { margin: 5px 20px 20px 0; }
 
-/* line 477, sass/style.scss */
+/* line 481, sass/style.scss */
 .wp-caption.alignright { margin: 5px 0 20px 20px; }
 
-/* line 480, sass/style.scss */
+/* line 484, sass/style.scss */
 .wp-caption img { border: 0 none; height: auto; margin: 0; max-width: 98.5%; padding: 0; width: auto; }
 
-/* line 489, sass/style.scss */
+/* line 493, sass/style.scss */
 .wp-caption .wp-caption-text, .gallery-caption { font-size: 11px; line-height: 17px; margin: 0; padding: 0 4px 5px; }
 
 /*------------------------------------*\ PRINT
 \*------------------------------------*/
-@media print { /* line 507, sass/style.scss */
+@media print { /* line 511, sass/style.scss */
   * { background: transparent !important; color: #000 !important; box-shadow: none !important; text-shadow: none !important; }
-  /* line 514, sass/style.scss */
+  /* line 518, sass/style.scss */
   a, a:visited { text-decoration: underline; }
-  /* line 517, sass/style.scss */
+  /* line 521, sass/style.scss */
   a[href]:after { content: " (" attr(href) ")"; }
-  /* line 520, sass/style.scss */
+  /* line 524, sass/style.scss */
   abbr[title]:after { content: " (" attr(title) ")"; }
-  /* line 525, sass/style.scss */
+  /* line 529, sass/style.scss */
   .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
-  /* line 528, sass/style.scss */
-  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
   /* line 532, sass/style.scss */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  /* line 536, sass/style.scss */
   thead { display: table-header-group; }
-  /* line 535, sass/style.scss */
+  /* line 539, sass/style.scss */
   tr, img { page-break-inside: avoid; }
-  /* line 538, sass/style.scss */
+  /* line 542, sass/style.scss */
   img { max-width: 100% !important; }
   @page { margin: 0.5cm; }
-  /* line 546, sass/style.scss */
+  /* line 550, sass/style.scss */
   p, h2, h3 { orphans: 3; widows: 3; }
-  /* line 551, sass/style.scss */
+  /* line 555, sass/style.scss */
   h2, h3 { page-break-after: avoid; } }
