@@ -6,7 +6,7 @@
 		
 		// DOM ready, take it away
 		$(window).ready(function() {
-		if ( $('body').hasClass('home') || $('body').hasClass('category') ) {
+		if ( $('body').hasClass('home') || $('body').hasClass('category') || $('body').hasClass('archive') ) {
 			
 			var anchors = [];
 

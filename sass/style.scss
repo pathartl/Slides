@@ -166,6 +166,7 @@ nav {
 /* footer */
 footer {
 	padding: 40px;
+	padding-bottom: 60px;
 	height: 100%;
 	position: relative;
 }
@@ -205,6 +206,7 @@ footer {
 			list-style: none;
 			border-bottom: 1px solid #eee;
 			a {padding: 10px; display: block}
+			li a {padding-left: 20px}
 			a:hover {background: #eee}
 			&:last-child {border-bottom: none}
 		}
@@ -250,7 +252,7 @@ article {
 }
 
 p {
-	margin: 0px;
+	margin: 14px 0;
 }
 
 .post-details {
@@ -328,7 +330,7 @@ div.tableCell, .single article, .single footer {
 		column-count: 2;
 		-webkit-column-count: 2;
 		-moz-column-count: 2;
-		p {padding-bottom: 10px;}
+		p {padding-bottom: 10px; margin: 0}
 	}
 }
 
@@ -397,6 +399,7 @@ h2 {
 	font: 40px 'Roboto', sans-serif;
 	font-weight: 300;
 	margin: 30px 0;
+	margin-top: 40px;
 }
 
 body {
