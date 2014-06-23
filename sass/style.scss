@@ -10,6 +10,8 @@
 	License: CC
 */
 
+// _media.scss
+
 /*------------------------------------*\
     MAIN
 \*------------------------------------*/
@@ -337,7 +339,7 @@ div.tableCell, .single article, .single footer {
 .widget_gravatar {
 	padding: 0;
 	padding-right: 25px;
-	margin-left: 5px;
+	imargin-left: 5px;
 	margin-top: 10px;
 	margin-right: -5px;
 	img {
@@ -412,8 +414,8 @@ p {
 }
 
 @font-face {
-	font-family:'Font-Name';
-	src:url('fonts/font-name.eot');
+	font-family:'Roboto';
+	src:url('fonts/Roboto.eot');
 	src:url('fonts/font-name.eot?#iefix') format('embedded-opentype'),
 		url('fonts/font-name.woff') format('woff'),
 		url('fonts/font-name.ttf') format('truetype'),
@@ -547,52 +549,4 @@ a img.aligncenter {
     PRINT
 \*------------------------------------*/
 
-@media print {
-	* {
-		background:transparent !important;
-		color:#000 !important;
-		box-shadow:none !important;
-		text-shadow:none !important;
-	}
-	a,
-	a:visited {
-		text-decoration:underline;
-	}
-	a[href]:after {
-		content:" (" attr(href) ")";
-	}
-	abbr[title]:after {
-		content:" (" attr(title) ")";
-	}
-	.ir a:after,
-	a[href^="javascript:"]:after,
-	a[href^="#"]:after {
-		content:"";
-	}
-	pre,blockquote {
-		border:1px solid #999;
-		page-break-inside:avoid;
-	}
-	thead {
-		display:table-header-group;
-	}
-	tr,img {
-		page-break-inside:avoid;
-	}
-	img {
-		max-width:100% !important;
-	}
-	@page {
-		margin:0.5cm;
-	}
-	p,
-	h2,
-	h3 {
-		orphans:3;
-		widows:3;
-	}
-	h2,
-	h3 {
-		page-break-after:avoid;
-	}
-}
+@import 'media';
