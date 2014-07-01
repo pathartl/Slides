@@ -24,6 +24,8 @@
 				fixedElements: '.pagination .next, .pagination .prev'
 			});
 		}
+		// YouTube Container
+		$("iframe[src*='://www.youtube.com").wrap("<div class='youtube-player'></div>");
 	});
 
 	});

@@ -50,6 +50,7 @@ body {
 img {
 	max-width:100%;
 	vertical-align:bottom;
+	height: auto
 }
 a {
 	color:#555;
@@ -397,10 +398,22 @@ div.tableCell, .single article, .single footer {
 
 
 /*------------------------------------*\
-    IMAGES
+    MEDIA
 \*------------------------------------*/
 
-
+.youtube-player {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 25px;
+	height: 0;
+	iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
 
 /*------------------------------------*\
 	TYPOGRAPHY
