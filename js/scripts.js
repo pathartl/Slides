@@ -24,6 +24,14 @@
 				fixedElements: '.pagination .next, .pagination .prev'
 			});
 		}
+
+		// Masonry
+		$('#footer-area-2').masonry({itemSelector: '.fluid-widget'});
+
+		$('li.archive-accordion-year').click(function() {
+				$('#footer-area-2').masonry('reloadItems');	
+		});
+
 		// YouTube Container
 		$("iframe[src*='://www.youtube.com").wrap("<div class='youtube-player'></div>");
 	});

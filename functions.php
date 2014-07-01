@@ -114,6 +114,9 @@ function html5blank_header_scripts()
         wp_register_script('adaptive-background', get_template_directory_uri() . '/js/jquery.adaptive-background.js', array('jquery'), '1.0.0'); // ThreeJS
         wp_enqueue_script('adaptive-background'); // Enqueue it!
 
+        wp_register_script('masonry', get_template_directory_uri() . '/js/masonry.pkgd.min.js', array('jquery'), '3.1.5'); // ThreeJS
+        wp_enqueue_script('masonry'); // Enqueue it!
+
         wp_enqueue_script('jquery-ui');
         wp_enqueue_script("jquery-effects-core");
 
@@ -215,7 +218,7 @@ if (function_exists('register_sidebar'))
         'name' => __('Footer Widget Area 2', 'html5blank'),
         'description' => __('The second widget area for the footer. This is the lower area.', 'html5blank'),
         'id' => 'footer-area-2',
-        'before_widget' => '<div id="%1$s" class="%2$s">',
+        'before_widget' => '<div id="%1$s" class="%2$s fluid-widget">',
         'after_widget' => '</div>',
         'before_title' => '<h3>',
         'after_title' => '</h3>'
@@ -594,14 +597,13 @@ function custom_footer() {
             </div>
             <div id="footer-area-2">
                 <?php if ( dynamic_sidebar('Footer Widget Area 2') ) : else : endif; ?>
+                <!-- copyright -->
+                <p class="copyright">
+                    &copy; <?php echo date('Y'); ?> Copyright <?php bloginfo('name'); ?>. <?php _e('Proudly powered by', 'html5blank'); ?>
+                    <a href="//wordpress.org" title="WordPress">WordPress</a>.
+                </p>
+                <!-- /copyright -->
             </div>
-    
-            <!-- copyright -->
-            <p class="copyright">
-                &copy; <?php echo date('Y'); ?> Copyright <?php bloginfo('name'); ?>. <?php _e('Proudly powered by', 'html5blank'); ?>
-                <a href="//wordpress.org" title="WordPress">WordPress</a>.
-            </p>
-            <!-- /copyright -->
 
         </footer>
         <!-- /footer -->
