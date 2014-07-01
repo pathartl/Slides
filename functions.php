@@ -150,6 +150,9 @@ function html5blank_styles()
 
     wp_register_style('roboto', 'http://fonts.googleapis.com/css?family=Roboto:400,700,500,300,100', array(), '1.0', 'all');
     wp_enqueue_style('roboto'); // Enqueue it!
+
+    wp_register_style('font-awesome', 'http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css', array(), '1.0', 'all');
+    wp_enqueue_style('font-awesome'); // Enqueue it!
 }
 
 // Register HTML5 Blank Navigation

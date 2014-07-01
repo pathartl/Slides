@@ -15,8 +15,6 @@
 			});
 
 			$('main').fullpage({
-				navigation: true,
-				navigationPosition: 'right',
 				css3: true,
 				scrollOverflow: true,
 				resize: false,
@@ -34,6 +32,24 @@
 
 		// YouTube Container
 		$("iframe[src*='://www.youtube.com").wrap("<div class='youtube-player'></div>");
+
+		// Navigation
+		$('nav').hover(function() {
+			$('nav').addClass('active');
+		}, function() {
+			$('nav').removeClass('active');
+		});
+
+		// Navigation icon labels
+		$('nav li:not(:first-child)').hover(function() {
+			var icon = $(this);
+			$('nav .icon-label').show().text(icon.attr('alt')).css({
+				top: icon.position().top,
+				left: 48
+		})}, function() {
+		  $('nav .icon-label').text('').hide();
+		});
+
 	});
 
 	});

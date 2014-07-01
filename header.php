@@ -28,6 +28,40 @@
 		<!-- wrapper -->
 		<div class="wrapper">
 
+			<nav>
+				<ul>
+					<li class="bars"><i class="fa fa-bars"></i></li>
+					<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+					
+					<?php 
+					    global $post;
+					    $post_slug=$post->post_name;
+	
+					    $post_icon = get_post_meta($post->ID, 'icon', true);
+	
+					    if (!$post_icon) $post_icon = 'file';
+					?>
+					
+					<li alt="<?php the_title(); ?>">
+						<a href="#<?php echo $post_slug; ?>">
+							<i class="fa fa-<?php echo $post_icon; ?>"></i>
+						</a>
+					</li>
+					
+					<?php endwhile; ?>
+					
+					<?php else: ?>
+					
+					<?php endif; ?>
+					<li alt="About Me">
+						<a href="#footer">
+							<i class="fa fa-user"></i>
+						</a>
+					</li>
+				</ul>
+				<div class="icon-label"></div>
+			</nav>
+
 			<!-- header -->
 			<!-- <header class="header clear" role="banner"> -->
 
