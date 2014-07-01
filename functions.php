@@ -243,8 +243,8 @@ function html5wp_pagination()
         'current' => max(1, get_query_var('paged')),
         'total' => $wp_query->max_num_pages,
         'prev_next' => true,
-        'prev_text' => __('Newer'),
-        'next_text' => __('Older')
+        'prev_text' => __(''),
+        'next_text' => __('')
     ));
 }
 
