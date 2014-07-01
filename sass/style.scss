@@ -356,27 +356,37 @@ div.tableCell, .single article, .single footer {
 	background: url(img/next.svg) center center no-repeat;
 	left: 50%;
 	margin-left: 470px;
+	&::before {
+		content: 'Older';
+	}
 }
 .prev {
 	background: url(img/prev.svg) center center no-repeat;
 	right: 50%;
 	margin-right: 470px;
+	&::before {
+		content: 'Newer';
+	}
 }
 .next, .prev {
 	position: absolute;
-	top: 0;
+	top: 50%;
+	margin-top: -25px;
 	display: block;
-	height: 100%;
 	background-size: contain;
 	width: 32px;
+	height: 51px;
 	opacity: 0.5;
-	font-weight: 300;
+	font-weight: 300px;
 	color: rgba(255,255,255,0);
-	line-height: 80px;
-	padding-top: 25%;
 	&:hover {
 		opacity: 0.8;
-		color: rgba(255,255,255,1)
+		color: rgba(255,255,255,1);
+	}
+
+	&::before {
+		position: relative;
+		top: -25px;
 	}
 }
 
