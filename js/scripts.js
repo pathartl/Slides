@@ -32,7 +32,11 @@
 
 	$(window).ready(function() {
 		$('.section .article .featured-image img').attr("data-adaptive-background", '1');
-		$.adaptiveBackground.run();
+		$.adaptiveBackground.run({
+    		selector: 'article .featured-image img',
+    		  parent: '.section',
+    		 exclude: []
+		});
 	});
 	
 })(jQuery, this);
