@@ -24,13 +24,15 @@
 
 	</head>
 	<body <?php body_class(); ?>>
-
 		<!-- wrapper -->
 		<div class="wrapper">
 
 			<nav>
 				<ul>
 					<li class="bars"><i class="fa fa-bars"></i></li>
+					<?php if (!is_front_page() || get_query_var('paged')) { ?>
+						<li alt="Home"><a href="/"><i class="fa fa-home"></i></a></li>
+					<?php } ?>
 					<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 					
 					<?php 
